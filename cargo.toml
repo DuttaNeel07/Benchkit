@@ -1,0 +1,28 @@
+[package]
+name = "benchkit"
+version = "0.1.0"
+edition = "2021"
+authors = []
+description = "A command benchmarking tool — measure, compare, understand."
+license = "MIT"
+repository = ""
+keywords = ["benchmark", "performance", "cli", "timing"]
+categories = ["command-line-utilities", "development-tools"]
+
+[[bin]]
+name = "bk"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive", "color"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+colored = "2.1"
+anyhow = "1.0"
+indicatif = "0.17"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
